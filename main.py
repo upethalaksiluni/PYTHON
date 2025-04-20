@@ -1,8 +1,15 @@
 from openai import OpenAI
+import os
+
+api_key = os.getenv("Api_Key")
+
+if not api_key:
+    raise ValueError("API key not found. Please set the 'Api_Key' environment variable.")
 
 client = OpenAI(
   base_url="https://openrouter.ai/api/v1",
-  api_key="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", ##api key
+  api_key=api_key
+  
 )
 chat_history = []
 personas = {
