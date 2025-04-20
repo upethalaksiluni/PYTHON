@@ -38,17 +38,19 @@ while True:
         "content": user_input
     })
 
-    if user_input == "exit":
-        break
-    
-    completion = client.chat.completions.create(
-    
-    model="deepseek/deepseek-r1-zero:free",
-    messages=chat_history
-    )
+    while True:
+        user_input == input("Enter your prompt: ")
+        
+        if user_input == "clear":
+            chat_history = []
+        chat_history.append({
+            "role": "system",
+            "content": personas[user_persona_input]
+        })
 
-    response = completion.choices[0].message.content
-    print(response)    
+        print("Chat history cleared.")
+        
+        continue
     
     chat_history.append({
         "role": "system",
